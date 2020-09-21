@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.souche.ddddemo.infrastructure.db.dao.OrderMapper">
+
+    <resultMap id="BaseResultMap" type="OrderEntity">
+        <id column="id" property="id"/>
+        <result column="order_no" property="orderNo"/>
+
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, order_no,
+        start_lat,start_lon, start_address, request_time, passenger_id, end_lat, end_lon, end_address,
+        driver_id, status,
+        get_in_lat, get_in_lon, get_in_address, get_in_time,
+        get_out_lat, get_out_lon, get_out_address, get_out_time,
+        created_at, updated_at
+    </sql>
+
+    <insert id="save" parameterType="OrderEntity">
+        INSERT INTO `order`
+        (`order_no`,`start_lat`, `start_lon`, `start_address`,
+        `request_time`, `passenger_id`,
+        `end_lat`, `end_lon`, `end_address`,
+        `driver_id`, `status`,
+        `get_in_lat`, `get_in_lon`, `get_in_address`, `get_in_time`,
+        `get_out_lat`, `get_out_lon`, `get_out_address`, `get_out_time`,
+        `created_at`, `updated_at`)
+        VALUES
+        (#{orderNo}, #{startLat}, #{startLon}, #{startAddress},
+        #{requestTime}, #{passengerId},
+        #{endLat}, #{endLon}, #{endAddress},
+        #{driverId}, #{status},
+        #{getInLat}, #{getInLon}, #{getInAddress}, #{getInTime},
+        #{getOutLat}, #{getOutLon}, #{getOutAddress}, #{getOutTime},
+        #{createdAt}, #{updatedAt});
+    </insert>
+
+    <select id="findByOrderNo" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"></include>
+        from `order` where order_no = #{orderNo} limit 1
+    </select>
+
+</mapper>
