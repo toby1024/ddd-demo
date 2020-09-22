@@ -27,9 +27,7 @@ public class TravelAppService {
      */
     public Travel create(Travel travel) {
         //设置订单号和时间
-        travel.setId(System.currentTimeMillis());
-        travel.setRequestTime(new Date());
-        travel.setStatus(0);
+        travel.init();
 
         Optional<Travel> result = travelDomainService.save(travel);
         if (result.isPresent()) {

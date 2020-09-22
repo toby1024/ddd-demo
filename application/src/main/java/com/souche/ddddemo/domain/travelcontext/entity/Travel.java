@@ -24,4 +24,10 @@ public class Travel {
     private Double endLat;
     private Double endLon;
     private String endAddress;
+
+    public void init(){
+        this.setId(System.currentTimeMillis());
+        this.setRequestTime(new Date());
+        this.setStatus(0);
+    }
 }
