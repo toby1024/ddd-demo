@@ -59,7 +59,6 @@ public class TravelRepositoryImpl implements TravelRepository {
 
             travel.setDriverLocation(driverLocation);
         }
-
         return travel;
     }
 }
