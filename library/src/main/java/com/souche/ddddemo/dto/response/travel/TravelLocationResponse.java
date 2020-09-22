@@ -12,6 +12,7 @@ public class TravelLocationResponse implements Serializable {
 
     private static final long serialVersionUID = 2417368599034956875L;
     private Long orderNo;
+    private Long driverId;
     private Double lon;
     private Double lat;
     private String address;

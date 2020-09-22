@@ -47,18 +47,8 @@ public class TravelRepositoryImpl implements TravelRepository {
         if (Objects.isNull(byOrderNo)) {
             return null;
         }
-        Travel travel = new Travel();
-        travel.setId(byOrderNo.getOrderNo());
-
         TravelDriverLocationEntity location = travelDriverLocationMapper.findByOrderNo(orderNo);
-        if (Objects.nonNull(location)) {
-            DriverLocation driverLocation = new DriverLocation();
-            driverLocation.setLon(location.getLon());
-            driverLocation.setLat(location.getLat());
-            driverLocation.setAddress(location.getAddress());
 
-            travel.setDriverLocation(driverLocation);
-        }
-        return travel;
+        return TravelAssembler.INSTANCE.travelWithLocation(byOrderNo, location);
     }
 }

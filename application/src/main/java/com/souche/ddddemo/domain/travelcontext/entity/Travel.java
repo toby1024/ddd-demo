@@ -35,6 +35,4 @@ public class Travel {
         this.setRequestTime(new Date());
         this.setStatus(0);
     }
-
-
 }

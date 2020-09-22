@@ -62,6 +62,7 @@ public interface TravelAssembler {
         response.setOrderNo(travel.getId());
         DriverLocation driverLocation = travel.getDriverLocation();
         if (Objects.nonNull(driverLocation)) {
+            response.setDriverId(driverLocation.getDriverId());
             response.setAddress(driverLocation.getAddress());
             response.setLon(driverLocation.getLon());
             response.setLat(driverLocation.getLat());

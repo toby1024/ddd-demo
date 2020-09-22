@@ -25,7 +25,7 @@ public class TravelDomainService {
      * @param travel
      * @return
      */
-    public Optional<Travel> save(Travel travel) {
+    public Optional<Travel> create(Travel travel) {
         int saveCnt = travelRepository.save(travel);
         if (1 == saveCnt) {
             return Optional.of(travelRepository.findById(travel.getId()));

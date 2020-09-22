@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.Optional;
 
 /**
@@ -31,7 +30,7 @@ public class TravelAppService {
         //设置订单号和时间
         travel.init();
 
-        Optional<Travel> result = travelDomainService.save(travel);
+        Optional<Travel> result = travelDomainService.create(travel);
         if (result.isPresent()) {
             return result.get();
         }
