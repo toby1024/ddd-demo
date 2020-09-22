@@ -3,6 +3,8 @@ package com.souche.ddddemo.gateway.ohs.api.rpc;
 import com.souche.ddddemo.appservice.travelctx.TravelAppService;
 import com.souche.ddddemo.domain.travelcontext.entity.Travel;
 import com.souche.ddddemo.dto.request.travel.CreateTravelParameter;
+import com.souche.ddddemo.dto.request.travel.QueryLocationParameter;
+import com.souche.ddddemo.dto.response.travel.TravelLocationResponse;
 import com.souche.ddddemo.dto.response.travel.TravelResponse;
 import com.souche.ddddemo.gateway.ohs.assembler.TravelAssembler;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @since: 2020/9/21
  */
 @Slf4j
-@DubboService(version = "1.0.0")
+@DubboService(version = "1.0.1")
 public class TravelRpcService implements com.souche.ddddemo.api.TravelRpcService {
     @Autowired
     private TravelAppService travelAppService;
@@ -27,4 +29,14 @@ public class TravelRpcService implements com.souche.ddddemo.api.TravelRpcService
         Travel travelResult = travelAppService.create(travel);
         return TravelAssembler.INSTANCE.fromTravel(travelResult);
     }
+
+    @Override
+    public TravelLocationResponse getTravelLocation(QueryLocationParameter parameter) {
+        Travel travel = TravelAssembler.INSTANCE.fromQueryLocationParameter(parameter);
+        Travel driverLocation = travelAppService.findDriverLocation(travel);
+        TravelLocationResponse response = TravelAssembler.INSTANCE.travelToLocationResponse(driverLocation);
+        return response;
+    }
+
+
 }

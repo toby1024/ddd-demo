@@ -1,11 +1,16 @@
 package com.souche.ddddemo.gateway.ohs.assembler;
 
 import com.souche.ddddemo.domain.travelcontext.entity.Travel;
+import com.souche.ddddemo.domain.travelcontext.vo.DriverLocation;
 import com.souche.ddddemo.dto.request.travel.CreateTravelParameter;
+import com.souche.ddddemo.dto.request.travel.QueryLocationParameter;
+import com.souche.ddddemo.dto.response.travel.TravelLocationResponse;
 import com.souche.ddddemo.dto.response.travel.TravelResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+
+import java.util.Objects;
 
 /**
  * @description:
@@ -33,4 +38,34 @@ public interface TravelAssembler {
      */
     @Mapping(source = "id", target = "travelId")
     TravelResponse fromTravel(Travel travel);
+
+    /**
+     * 查询司机位置参数
+     *
+     * @param parameter
+     * @return
+     */
+    @Mapping(source = "orderNo", target = "id")
+    Travel fromQueryLocationParameter(QueryLocationParameter parameter);
+
+    /**
+     * travel 获取司机位置
+     *
+     * @param travel
+     * @return
+     */
+    default TravelLocationResponse travelToLocationResponse(Travel travel) {
+        if (Objects.isNull(travel)) {
+            return null;
+        }
+        TravelLocationResponse response = new TravelLocationResponse();
+        response.setOrderNo(travel.getId());
+        DriverLocation driverLocation = travel.getDriverLocation();
+        if (Objects.nonNull(driverLocation)) {
+            response.setAddress(driverLocation.getAddress());
+            response.setLon(driverLocation.getLon());
+            response.setLat(driverLocation.getLat());
+        }
+        return response;
+    }
 }

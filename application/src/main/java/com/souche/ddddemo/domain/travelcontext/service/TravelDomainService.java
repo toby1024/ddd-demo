@@ -5,6 +5,7 @@ import com.souche.ddddemo.interfaces.persistence.TravelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -28,6 +29,20 @@ public class TravelDomainService {
         int saveCnt = travelRepository.save(travel);
         if (1 == saveCnt) {
             return Optional.of(travelRepository.findById(travel.getId()));
+        }
+        return Optional.empty();
+    }
+
+    /**
+     * 行程司机的位置
+     *
+     * @param travelRequest
+     * @return
+     */
+    public Optional<Travel> findLocation(Travel travelRequest) {
+        Travel travel = travelRepository.findByOrderNo(travelRequest.getId());
+        if (Objects.nonNull(travel)) {
+            return Optional.of(travel);
         }
         return Optional.empty();
     }

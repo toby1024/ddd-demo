@@ -1,5 +1,6 @@
 package com.souche.ddddemo.domain.travelcontext.entity;
 
+import com.souche.ddddemo.domain.travelcontext.vo.DriverLocation;
 import lombok.Data;
 
 import java.util.Date;
@@ -24,4 +25,16 @@ public class Travel {
     private Double endLat;
     private Double endLon;
     private String endAddress;
+
+    private DriverLocation driverLocation;
+    /**
+     * 初始化订单参数
+     */
+    public void init() {
+        this.setId(System.currentTimeMillis());
+        this.setRequestTime(new Date());
+        this.setStatus(0);
+    }
+
+
 }

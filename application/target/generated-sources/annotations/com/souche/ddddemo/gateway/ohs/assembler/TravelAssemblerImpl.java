@@ -2,12 +2,13 @@ package com.souche.ddddemo.gateway.ohs.assembler;
 
 import com.souche.ddddemo.domain.travelcontext.entity.Travel;
 import com.souche.ddddemo.dto.request.travel.CreateTravelParameter;
+import com.souche.ddddemo.dto.request.travel.QueryLocationParameter;
 import com.souche.ddddemo.dto.response.travel.TravelResponse;
 import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-09-21T11:27:19+0800",
+    date = "2020-09-22T14:13:20+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_192 (Oracle Corporation)"
 )
 public class TravelAssemblerImpl implements TravelAssembler {
@@ -51,5 +52,18 @@ public class TravelAssemblerImpl implements TravelAssembler {
         travelResponse.setStatus( travel.getStatus() );
 
         return travelResponse;
+    }
+
+    @Override
+    public Travel fromQueryLocationParameter(QueryLocationParameter parameter) {
+        if ( parameter == null ) {
+            return null;
+        }
+
+        Travel travel = new Travel();
+
+        travel.setId( parameter.getOrderNo() );
+
+        return travel;
     }
 }

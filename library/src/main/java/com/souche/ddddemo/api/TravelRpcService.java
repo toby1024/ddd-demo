@@ -1,6 +1,8 @@
 package com.souche.ddddemo.api;
 
 import com.souche.ddddemo.dto.request.travel.CreateTravelParameter;
+import com.souche.ddddemo.dto.request.travel.QueryLocationParameter;
+import com.souche.ddddemo.dto.response.travel.TravelLocationResponse;
 import com.souche.ddddemo.dto.response.travel.TravelResponse;
 
 /**
@@ -10,4 +12,6 @@ import com.souche.ddddemo.dto.response.travel.TravelResponse;
  */
 public interface TravelRpcService {
     TravelResponse createTravel(CreateTravelParameter parameter);
+
+    TravelLocationResponse getTravelLocation(QueryLocationParameter parameter);
 }

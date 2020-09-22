@@ -6,7 +6,7 @@ import javax.annotation.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2020-09-21T11:27:19+0800",
+    date = "2020-09-22T10:23:23+0800",
     comments = "version: 1.2.0.Final, compiler: javac, environment: Java 1.8.0_192 (Oracle Corporation)"
 )
 public class TravelAssemblerImpl implements TravelAssembler {

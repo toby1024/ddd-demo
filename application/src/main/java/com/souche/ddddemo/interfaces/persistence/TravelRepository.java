@@ -23,4 +23,6 @@ public interface TravelRepository {
      * @return
      */
     Travel findById(Long id);
+
+    Travel findByOrderNo(Long orderNo);
 }

@@ -52,3 +52,14 @@ CREATE TABLE `order` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `travel_driver_location` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `order_no` BIGINT(20) NULL,
+  `driver_id` INT NULL,
+  `lon` DOUBLE NULL,
+  `lat` DOUBLE NULL,
+  `address` VARCHAR(100) NULL,
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;;
