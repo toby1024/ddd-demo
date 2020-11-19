@@ -1,4 +1,7 @@
 # ddd-demo
+## 代码架构图
+![image](https://github.com/toby1024/ddd-demo/blob/master/doc/image/ddd_demo.png)
+
 ## user case
 - 作为乘客我希望创建一个出行订单，以便于从A地前往B地
 - 作为司机我希望履行一个订单，以便于获取收入
