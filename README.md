@@ -1,10 +1,10 @@
 # ddd-demo
 ## 代码架构图
-![image](https://github.com/toby1024/ddd-demo/blob/master/doc/image/ddd_demo.png)
+![image](doc/image/ddd_demo.png)
 
 ## 时序图
 ### rest接口创建行程
-![image](https://github.com/toby1024/ddd-demo/blob/master/doc/image/rest_create_travel.png)
+![image](doc/image/rest_create_travel.png)
 
 
 ## user case
